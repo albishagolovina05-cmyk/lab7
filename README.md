@@ -450,7 +450,6 @@ t3 = 30 => "Laptop"
 
 ---
 
-## Блок-схема оптимизации
 
 
 ---
@@ -562,30 +561,15 @@ Dictionary<int, string> products = new Dictionary<int, string>
     {30, "DuplicateLaptop"}
 };
 ```
+<img width="542" height="303" alt="image" src="https://github.com/user-attachments/assets/a5b62c85-d7d3-4917-9141-81ebdeafc73e" />
 
 ---
 
-## LLVM IR
-
-```llvm
-t1 = 10 => "Phone"
-t2 = 20 => ""
-t3 = 10 => "DuplicatePhone"
-t4 = 30 => "Laptop"
-t5 = 40 => ""
-t6 = 30 => "DuplicateLaptop"
-```
-
----
 
 ## Optimized IR
 
-```llvm
-t1 = 10 => "Phone"
-t2 = 20 => ""
-t4 = 30 => "Laptop"
-t5 = 40 => ""
-```
+<img width="604" height="479" alt="image" src="https://github.com/user-attachments/assets/5c49e042-b423-464c-b4ba-b4b2fee458ef" />
+
 
 ---
 
