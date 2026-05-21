@@ -545,6 +545,7 @@ t1 = 10 => "Phone"
 Дополнительных вычислений во время выполнения программы не требуется.
 
 ---
+<img width="1167" height="1348" alt="image" src="https://github.com/user-attachments/assets/bf14a798-c5bb-46b7-84e2-bcade5ed1acb" />
 
 # Пример полной оптимизации
 
