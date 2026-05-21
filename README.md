@@ -35,9 +35,11 @@
 sudo apt install clang llvm
 sudo apt install graphviz
 ```
+<img width="576" height="278" alt="image" src="https://github.com/user-attachments/assets/b83d1995-d4ad-4741-acdf-76f1a6fdc997" />
 
-**Рис. 1** – Установка Clang и LLVM  
-**Рис. 2** – Установка Graphviz
+
+<img width="628" height="188" alt="image" src="https://github.com/user-attachments/assets/a27e58da-bcbf-4569-8a0d-2ae8bf1c6cd1" />
+
 
 ---
 
@@ -61,8 +63,8 @@ int main() {
     return 0;
 }
 ```
+<img width="616" height="226" alt="image" src="https://github.com/user-attachments/assets/afb218c9-2bca-4dc0-b34d-9309016fba48" />
 
-**Рис. 3** – Исходный код программы `main.c`
 
 ---
 
@@ -74,7 +76,8 @@ int main() {
 clang -Xclang -ast-dump -fsyntax-only main.c
 ```
 
-**Рис. 4** – Абстрактное синтаксическое дерево программы
+<img width="624" height="372" alt="image" src="https://github.com/user-attachments/assets/a6f2e044-3fa3-4166-845f-242383b4b98b" />
+
 
 ---
 
@@ -85,8 +88,8 @@ clang -Xclang -ast-dump -fsyntax-only main.c
 ```bash
 clang -S -emit-llvm main.c -o main.ll
 ```
+<img width="550" height="343" alt="image" src="https://github.com/user-attachments/assets/1362268c-4f18-4db3-ac2b-541eb26c8919" />
 
-**Рис. 5** – Файл `main.ll`
 
 ---
 
@@ -97,24 +100,24 @@ clang -S -emit-llvm main.c -o main.ll
 ```bash
 clang -O0 -S -emit-llvm main.c -o main_O0.ll
 ```
+<img width="585" height="342" alt="image" src="https://github.com/user-attachments/assets/e8baa546-1664-4ca3-9f0b-d769c361345c" />
 
-**Рис. 6** – `main_O0.ll`
 
 ### LLVM IR с оптимизацией `-O2`
 
 ```bash
 clang -O2 -S -emit-llvm main.c -o main_O2.ll
 ```
+<img width="622" height="389" alt="image" src="https://github.com/user-attachments/assets/48f7f032-6660-45a8-9249-31c5f6b15691" />
 
-**Рис. 7** – `main_O2.ll`
 
 ### Сравнение файлов
 
 ```bash
 diff main_O0.ll main_O2.ll
 ```
+<img width="619" height="392" alt="image" src="https://github.com/user-attachments/assets/ac31aaae-fbb4-46d1-9da1-a9533e05f1ee" />
 
-**Рис. 8** – Сравнение LLVM IR до и после оптимизации
 
 ---
 
@@ -125,16 +128,16 @@ diff main_O0.ll main_O2.ll
 ```bash
 opt -passes="dot-cfg" main_O2.ll -disable-output
 ```
+<img width="146" height="25" alt="image" src="https://github.com/user-attachments/assets/8cb5ce0b-52aa-4878-9925-2f7efeaf22df" />
 
-**Рис. 9** – Генерация DOT-файлов CFG
 
 Поиск `.dot` файлов:
 
 ```bash
 find . -name "*dot"
 ```
+<img width="92" height="29" alt="image" src="https://github.com/user-attachments/assets/d2714770-cbdb-4081-9ec6-6b703122e477" />
 
-**Рис. 10** – DOT-файлы CFG
 
 ### Преобразование DOT в PNG
 
@@ -142,8 +145,7 @@ find . -name "*dot"
 dot -Tpng .main.dot -o cfg_main.png
 dot -Tpng .square.dot -o cfg_square.png
 ```
-
-**Рис. 11** – Генерация изображений графов
+<img width="248" height="27" alt="image" src="https://github.com/user-attachments/assets/9d56978f-8a65-4e44-8a3f-6da9ecfb42e1" />
 
 ### Открытие графов
 
@@ -152,9 +154,10 @@ xdg-open cfg_main.png
 xdg-open cfg_square.png
 ```
 
-**Рис. 12** – Открытие PNG-файлов  
-**Рис. 13** – CFG функции `main`  
-**Рис. 14** – CFG функции `square`
+<img width="500" height="99" alt="image" src="https://github.com/user-attachments/assets/b045816b-afbe-4a06-90ea-69f5525108eb" />
+<img width="224" height="90" alt="image" src="https://github.com/user-attachments/assets/f41a626a-8c22-44a9-9e4f-5e50d34b5503" />
+
+
 
 ---
 
@@ -179,8 +182,8 @@ xdg-open cfg_square.png
 nano array.cpp
 ```
 
-**Рис. 15** – Создание файла `array.cpp`  
-**Рис. 16** – Исходный код программы `array.cpp`
+<img width="298" height="169" alt="image" src="https://github.com/user-attachments/assets/c224b436-8b6e-4160-b1e5-4b6d8a08c548" />
+
 
 ---
 
@@ -192,7 +195,8 @@ nano array.cpp
 clang++ -O0 -S -emit-llvm array.cpp -o array_O0.ll
 ```
 
-**Рис. 17** – `array_O0.ll`
+<img width="625" height="366" alt="image" src="https://github.com/user-attachments/assets/6cd944e1-65b2-49eb-8a08-21a07039213a" />
+
 
 ### С оптимизацией (`-O2`)
 
@@ -200,7 +204,8 @@ clang++ -O0 -S -emit-llvm array.cpp -o array_O0.ll
 clang++ -O2 -S -emit-llvm array.cpp -o array_O2.ll
 ```
 
-**Рис. 18** – `array_O2.ll`
+<img width="624" height="357" alt="image" src="https://github.com/user-attachments/assets/918beb9f-bce8-4666-b33d-959d421b300a" />
+
 
 ---
 
@@ -218,7 +223,8 @@ clang++ -O2 -funroll-loops -S -emit-llvm array.cpp -o array_unroll.ll
 diff array_O2.ll array_unroll.ll
 ```
 
-**Рис. 19** – Сравнение LLVM IR с `-O2` и `-funroll-loops`
+<img width="443" height="29" alt="image" src="https://github.com/user-attachments/assets/e927a235-e4d4-41c5-a745-d86b66dc8f23" />
+
 
 ### Вывод
 
@@ -240,7 +246,8 @@ dot -Tpng .main.dot -o cfg.png
 xdg-open cfg.png
 ```
 
-**Рис. 20** – CFG функции `main` без оптимизаций
+<img width="1845" height="1007" alt="image" src="https://github.com/user-attachments/assets/e558ea1a-2b2a-4922-8be8-8e8f8d36362c" />
+
 
 ### CFG после оптимизации (`-O2`)
 
@@ -254,7 +261,8 @@ dot -Tpng .main.dot -o cfg_O2.png
 xdg-open cfg_O2.png
 ```
 
-**Рис. 21** – CFG функции `main` после оптимизации `-O2`
+<img width="1761" height="1017" alt="image" src="https://github.com/user-attachments/assets/d05afed8-832f-401e-b5bf-daf475c92cc4" />
+
 
 ---
 
@@ -278,7 +286,8 @@ opt -passes="loop-rotate,licm" base.ll -S -o opt_loops.ll
 nano opt_loops.ll
 ```
 
-**Рис. 22** – `opt_loops.ll`
+<img width="622" height="365" alt="image" src="https://github.com/user-attachments/assets/e2a5e4e7-805c-4ff7-833a-a89f58d20388" />
+
 
 ---
 
